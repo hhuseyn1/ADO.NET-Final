@@ -63,7 +63,7 @@ public partial class Form1 : Form
             {
                 conn?.Open();
                 listView.Columns.Add("FullName");
-                command = new("SELECT Authors.[FirstName]+ ' ' +Authors.[LastName] AS [FullName] FROM Authors,Books INNER JOIN Categories ON Categories.Id=Id_Category WHERE Categories.[Name]=@p1", conn);
+                command = new("SELECT Authors.[FirstName]+ ' ' +Authors.[LastName] AS [FullName] FROM Authors,Books INNER JOIN Categories ON Id_Category = Categories.Id WHERE LOWER(Categories.[Name])=LOWER(@p1)  GROUP BY Authors.FirstName,Authors.LastName", conn);
                 command.Parameters.Add("@p1", SqlDbType.NVarChar).Value = cmbBox_Category.SelectedItem.ToString();
 
                 listView.View = View.Details;
@@ -83,5 +83,5 @@ public partial class Form1 : Form
                 reader?.Close();
             }
         }
-    }
+    }   
 }
