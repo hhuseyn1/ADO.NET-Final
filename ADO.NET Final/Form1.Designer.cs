@@ -30,8 +30,8 @@
         {
             this.cmbBox_Category = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Searchtxtbox = new System.Windows.Forms.TextBox();
+            this.SearchBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -57,22 +57,23 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Category";
             // 
-            // textBox1
+            // Searchtxtbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(175, 35);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(258, 24);
-            this.textBox1.TabIndex = 2;
+            this.Searchtxtbox.Location = new System.Drawing.Point(175, 35);
+            this.Searchtxtbox.Multiline = true;
+            this.Searchtxtbox.Name = "Searchtxtbox";
+            this.Searchtxtbox.Size = new System.Drawing.Size(258, 24);
+            this.Searchtxtbox.TabIndex = 2;
             // 
-            // button1
+            // SearchBtn
             // 
-            this.button1.Location = new System.Drawing.Point(449, 35);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 24);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
+            this.SearchBtn.Location = new System.Drawing.Point(449, 35);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(75, 24);
+            this.SearchBtn.TabIndex = 3;
+            this.SearchBtn.Text = "Search";
+            this.SearchBtn.UseVisualStyleBackColor = true;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // label2
             // 
@@ -140,8 +141,8 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.SearchBtn);
+            this.Controls.Add(this.Searchtxtbox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbBox_Category);
             this.Name = "Form1";
@@ -155,8 +156,8 @@
 
         private ComboBox cmbBox_Category;
         private Label label1;
-        private TextBox textBox1;
-        private Button button1;
+        private TextBox Searchtxtbox;
+        private Button SearchBtn;
         private Label label2;
         private Button button2;
         private Button button3;
