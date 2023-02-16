@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Data.Common;
+using System.Windows.Forms;
 
 namespace ADO.NET_Final;
 
@@ -82,7 +83,6 @@ public partial class EditAuthor : Form
             dataAdapter = new SqlDataAdapter("SELECT * FROM Authors",conn);
             dataAdapter.Fill(dataSet, "myTable");
             dataAdapter.UpdateCommand = updateCommand;
-
 
         }
         catch(Exception ex)
