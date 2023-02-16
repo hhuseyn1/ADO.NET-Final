@@ -53,7 +53,7 @@ public partial class Form1 : Form
             reader?.Close();
         }
     }
-    private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+    private async void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
     {
         SqlDataReader dataReader = null;
         listView.Columns.Clear();
@@ -69,7 +69,7 @@ public partial class Form1 : Form
                 command.Parameters.Add("@p1", SqlDbType.NVarChar).Value = cmbBox_Category.SelectedItem.ToString();
 
                 listView.View = View.Details;
-                dataReader = command.ExecuteReader();
+                dataReader = await command.ExecuteReaderAsync();
                 while (dataReader.Read())
                 {
                     listView.Items.Add((string)dataReader["FullName"]);
@@ -87,7 +87,7 @@ public partial class Form1 : Form
         }
     }
 
-    private void SearchBtn_Click(object sender, EventArgs e)
+    private async void SearchBtn_ClickAsync(object sender, EventArgs e)
     {
             
             try
@@ -100,13 +100,13 @@ public partial class Form1 : Form
                     return;
                 }
 
-                command = new("SELECT Authors.[FirstName]+ ' ' +Authors.[LastName] AS [FullName] FROM Authors,Books INNER JOIN Categories ON Id_Category = Categories.Id WHERE LOWER(Categories.[Name])=LOWER(@p1) AND LOWER(Authors.[FirstName]) LIKE LOWER(%@st%) OR LOWER(Authors.[LastName]) LIKE LOWER(%@st%) GROUP BY Authors.FirstName,Authors.LastName", conn);
+                command = new("SELECT Authors.[FirstName]+ ' ' +Authors.[LastName] AS [FullName] FROM Authors,Books INNER JOIN Categories ON Id_Category = Categories.Id WHERE LOWER(Categories.[Name])=LOWER(@p1) AND LOWER(Authors.[FirstName]) LIKE LOWER('%@st%') OR LOWER(Authors.[LastName]) LIKE LOWER('%@st%') GROUP BY Authors.FirstName,Authors.LastName", conn);
                 command.Parameters.AddWithValue("@st", SqlDbType.Text).Value = Searchtxtbox.Text.ToString();
                 command.Parameters.Add("@p1", SqlDbType.NVarChar).Value = cmbBox_Category.SelectedItem.ToString();
 
                 conn.Open();
 
-                DbDataReader dataReader = command.ExecuteReader();
+                DbDataReader dataReader =await command.ExecuteReaderAsync();
 
                 listView.Items.Clear();
                 while (dataReader.Read())
