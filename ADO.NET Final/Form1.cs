@@ -30,14 +30,15 @@ public partial class Form1 : Form
         fillData();
     }
 
-    public void fillData()
+    public async Task fillData()
     {
         try
         {
             conn?.Open();
 
             command = new SqlCommand("SELECT Categories.[Name] AS [Category] FROM Categories", conn);
-            reader = command.ExecuteReader();
+            reader = await command.ExecuteReaderAsync();
+            cmbBox_Category.Items.Add("-");
             while (reader.Read())
             {
                 cmbBox_Category.Items.Add(reader["Category"]);
@@ -65,6 +66,7 @@ public partial class Form1 : Form
             {
                 conn?.Open();
                 listView.Columns.Add("FullName");
+                listView.Columns[0].Width += 100;
                 command = new("SELECT Authors.[FirstName]+ ' ' +Authors.[LastName] AS [FullName] FROM Authors,Books INNER JOIN Categories ON Id_Category = Categories.Id WHERE LOWER(Categories.[Name])=LOWER(@p1)  GROUP BY Authors.FirstName,Authors.LastName", conn);
                 command.Parameters.Add("@p1", SqlDbType.NVarChar).Value = cmbBox_Category.SelectedItem.ToString();
 
@@ -89,21 +91,20 @@ public partial class Form1 : Form
 
     private async void SearchBtn_ClickAsync(object sender, EventArgs e)
     {
-            
             try
             {
 
-                if (cmbBox_Category.SelectedItem is null)
+            if (cmbBox_Category.SelectedItem is null )
                 {
                     MessageBox.Show("Please select any category","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     Searchtxtbox.Text = null;
                     return;
                 }
 
-                command = new("SELECT Authors.[FirstName]+ ' ' +Authors.[LastName] AS [FullName] FROM Authors,Books INNER JOIN Categories ON Id_Category = Categories.Id WHERE LOWER(Categories.[Name])=LOWER(@p1) AND LOWER(Authors.[FirstName]) LIKE LOWER('%@st%') OR LOWER(Authors.[LastName]) LIKE LOWER('%@st%') GROUP BY Authors.FirstName,Authors.LastName", conn);
+                command = new("SELECT Authors.[FirstName]+ ' ' +Authors.[LastName] AS [FullName] FROM Authors,Books INNER JOIN Categories ON Id_Category = Categories.Id WHERE LOWER(Categories.[Name])=LOWER(@p1) AND LOWER(Authors.[FirstName]) LIKE '%' + LOWER(@st) +'%' OR LOWER(Authors.[LastName]) LIKE '%' + LOWER(@st) + '%' GROUP BY Authors.[FirstName],Authors.[LastName]", conn);
                 command.Parameters.AddWithValue("@st", SqlDbType.Text).Value = Searchtxtbox.Text.ToString();
                 command.Parameters.Add("@p1", SqlDbType.NVarChar).Value = cmbBox_Category.SelectedItem.ToString();
-
+           
                 conn.Open();
 
                 DbDataReader dataReader =await command.ExecuteReaderAsync();
@@ -111,8 +112,7 @@ public partial class Form1 : Form
                 listView.Items.Clear();
                 while (dataReader.Read())
                 {
-                    listView.Items.Add(dataReader[0].ToString() + " - " +
-                    dataReader[1].ToString());
+                listView.Items.Add(dataReader[0].ToString());
                 }
             }
             catch (Exception ex)
@@ -122,6 +122,7 @@ public partial class Form1 : Form
             finally
             {
                 conn.Close();
+                Searchtxtbox.Text = null;
             }
-        }
+    }
 }
