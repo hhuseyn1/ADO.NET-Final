@@ -42,7 +42,7 @@
             // 
             this.IdLbl.AutoSize = true;
             this.IdLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.IdLbl.Location = new System.Drawing.Point(30, 19);
+            this.IdLbl.Location = new System.Drawing.Point(23, 22);
             this.IdLbl.Name = "IdLbl";
             this.IdLbl.Size = new System.Drawing.Size(20, 17);
             this.IdLbl.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             this.FirstNameLbl.AutoSize = true;
             this.FirstNameLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.FirstNameLbl.Location = new System.Drawing.Point(32, 81);
+            this.FirstNameLbl.Location = new System.Drawing.Point(23, 94);
             this.FirstNameLbl.Name = "FirstNameLbl";
             this.FirstNameLbl.Size = new System.Drawing.Size(70, 17);
             this.FirstNameLbl.TabIndex = 1;
@@ -62,7 +62,7 @@
             // 
             this.LastNameLbl.AutoSize = true;
             this.LastNameLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LastNameLbl.Location = new System.Drawing.Point(32, 137);
+            this.LastNameLbl.Location = new System.Drawing.Point(23, 176);
             this.LastNameLbl.Name = "LastNameLbl";
             this.LastNameLbl.Size = new System.Drawing.Size(68, 17);
             this.LastNameLbl.TabIndex = 2;
@@ -70,21 +70,21 @@
             // 
             // Idtxtbox
             // 
-            this.Idtxtbox.Location = new System.Drawing.Point(30, 39);
+            this.Idtxtbox.Location = new System.Drawing.Point(23, 42);
             this.Idtxtbox.Name = "Idtxtbox";
             this.Idtxtbox.Size = new System.Drawing.Size(141, 23);
             this.Idtxtbox.TabIndex = 3;
             // 
             // FirstNametxtbox
             // 
-            this.FirstNametxtbox.Location = new System.Drawing.Point(32, 101);
+            this.FirstNametxtbox.Location = new System.Drawing.Point(23, 114);
             this.FirstNametxtbox.Name = "FirstNametxtbox";
             this.FirstNametxtbox.Size = new System.Drawing.Size(141, 23);
             this.FirstNametxtbox.TabIndex = 4;
             // 
             // LastNametxtbox
             // 
-            this.LastNametxtbox.Location = new System.Drawing.Point(32, 157);
+            this.LastNametxtbox.Location = new System.Drawing.Point(23, 196);
             this.LastNametxtbox.Name = "LastNametxtbox";
             this.LastNametxtbox.Size = new System.Drawing.Size(141, 23);
             this.LastNametxtbox.TabIndex = 5;
@@ -92,9 +92,9 @@
             // SaveBtn
             // 
             this.SaveBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.SaveBtn.Location = new System.Drawing.Point(32, 214);
+            this.SaveBtn.Location = new System.Drawing.Point(23, 264);
             this.SaveBtn.Name = "SaveBtn";
-            this.SaveBtn.Size = new System.Drawing.Size(79, 23);
+            this.SaveBtn.Size = new System.Drawing.Size(79, 27);
             this.SaveBtn.TabIndex = 6;
             this.SaveBtn.Text = "Save";
             this.SaveBtn.UseVisualStyleBackColor = true;
@@ -103,9 +103,9 @@
             // CancelBtn
             // 
             this.CancelBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CancelBtn.Location = new System.Drawing.Point(147, 214);
+            this.CancelBtn.Location = new System.Drawing.Point(133, 264);
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(79, 23);
+            this.CancelBtn.Size = new System.Drawing.Size(79, 27);
             this.CancelBtn.TabIndex = 7;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
@@ -115,7 +115,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(263, 284);
+            this.ClientSize = new System.Drawing.Size(280, 375);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.LastNametxtbox);

@@ -24,7 +24,6 @@ public partial class Form1 : Form
                               .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).Build();
 
         connectionString = configuration.GetConnectionString("SqlServerLibrary");
-
         conn = new SqlConnection(connectionString);
         fillData();
     }
@@ -64,16 +63,24 @@ public partial class Form1 : Form
             try
             {
                 conn?.Open();
-                listView.Columns.Add("FullName");
-                listView.Columns[0].Width += 100;
-                command = new("SELECT Authors.[FirstName]+ ' ' +Authors.[LastName] AS [FullName] FROM Authors,Books INNER JOIN Categories ON Id_Category = Categories.Id WHERE LOWER(Categories.[Name])=LOWER(@p1)  GROUP BY Authors.FirstName,Authors.LastName", conn);
+                listView.Columns.Add("Id");
+                listView.Columns.Add("Firstname");
+                listView.Columns.Add("Lastname");
+                command = new("SELECT Authors.Id AS [Id] , Authors.[FirstName] AS [FirstName] , Authors.[LastName] AS [LastName] FROM Authors,Books INNER JOIN Categories ON Id_Category = Categories.Id WHERE LOWER(Categories.[Name])=LOWER(@p1)  GROUP BY Authors.Id,Authors.FirstName,Authors.LastName", conn);
                 command.Parameters.Add("@p1", SqlDbType.NVarChar).Value = cmbBox_Category.SelectedItem.ToString();
 
                 listView.View = View.Details;
+                listView.Columns[1].Width += 100;
+                listView.Columns[2].Width += 100;
                 dataReader = await command.ExecuteReaderAsync();
                 while (dataReader.Read())
                 {
-                    listView.Items.Add((string)dataReader["FullName"]);
+                    listView.Items.Add(dataReader["Id"].ToString());
+                    for (int i = 0; i < listView.Items.Count; i++)
+                    {
+                    listView.Items[i].SubItems.Add(dataReader["FirstName"].ToString());
+                    listView.Items[i].SubItems.Add(dataReader["LastName"].ToString());
+                    }
                 }
             }
             catch (Exception ex)
@@ -100,7 +107,7 @@ public partial class Form1 : Form
                     return;
                 }
 
-                command = new("SELECT Authors.[FirstName]+ ' ' +Authors.[LastName] AS [FullName] FROM Authors,Books INNER JOIN Categories ON Id_Category = Categories.Id WHERE LOWER(Categories.[Name])=LOWER(@p1) AND LOWER(Authors.[FirstName]) LIKE '%' + LOWER(@st) +'%' OR LOWER(Authors.[LastName]) LIKE '%' + LOWER(@st) + '%' GROUP BY Authors.[FirstName],Authors.[LastName]", conn);
+                command = new("SELECT Authors.Id AS [Id],Authors.[FirstName] AS [Firstname] , Authors.[LastName] AS [Lastname] FROM Authors,Books INNER JOIN Categories ON Id_Category = Categories.Id WHERE LOWER(Categories.[Name])=LOWER(@p1) AND LOWER(Authors.[FirstName]) LIKE '%' + LOWER(@st) +'%' OR LOWER(Authors.[LastName]) LIKE '%' + LOWER(@st) + '%' GROUP BY Authors.Id, Authors.[FirstName],Authors.[LastName]", conn);
                 command.Parameters.AddWithValue("@st", SqlDbType.Text).Value = Searchtxtbox.Text.ToString();
                 command.Parameters.Add("@p1", SqlDbType.NVarChar).Value = cmbBox_Category.SelectedItem.ToString();
            
@@ -112,7 +119,12 @@ public partial class Form1 : Form
                 while (dataReader.Read())
                 {
                 listView.Items.Add(dataReader[0].ToString());
+                for (int i = 0; i < listView.Items.Count; i++)
+                {
+                    listView.Items[i].SubItems.Add(dataReader["FirstName"].ToString());
+                    listView.Items[i].SubItems.Add(dataReader["LastName"].ToString());
                 }
+            }
             }
             catch (Exception ex)
             {
@@ -132,6 +144,25 @@ public partial class Form1 : Form
 
     private void EditBtn_Click(object sender, EventArgs e)
     {
+        bool isSelected=false;
+
+        foreach (var item in listView.SelectedItems)
+        {
+            if (item is not null)
+                isSelected=true;
+        }
+        if (cmbBox_Category.SelectedItem is null || !isSelected)
+        {
+            MessageBox.Show("Please select any author","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            return;
+        }
+        else
+        {
+            int id = 0;
+            id = Int32.Parse(listView.SelectedItems[0].Text);
+            EditAuthor editAuthor = new(id);
+            editAuthor.Show();
+        }
 
     }
 
