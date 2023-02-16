@@ -2,7 +2,6 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Data.Common;
-using System.Windows.Forms;
 
 namespace ADO.NET_Final;
 
@@ -124,5 +123,20 @@ public partial class Form1 : Form
                 conn.Close();
                 Searchtxtbox.Text = null;
             }
+    }
+
+    private void AddBtn_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void EditBtn_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    private void DeleteBtn_Click(object sender, EventArgs e)
+    {
+
     }
 }
