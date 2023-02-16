@@ -83,7 +83,7 @@ public partial class EditAuthor : Form
             dataAdapter = new SqlDataAdapter("SELECT * FROM Authors",conn);
             dataAdapter.Fill(dataSet, "myTable");
             dataAdapter.UpdateCommand = updateCommand;
-
+             
         }
         catch(Exception ex)
         {
@@ -91,6 +91,7 @@ public partial class EditAuthor : Form
         }
         finally
         {
+            conn.Close();
             LastNametxtbox.Text = null;
             FirstNametxtbox.Text = null;
             Idtxtbox.Text = null;
