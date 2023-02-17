@@ -27,27 +27,6 @@ public partial class Form1 : Form
         conn = new SqlConnection(connectionString);
         fillData();
     }
-    public void setLvi(DataSet dataSet)
-    {
-            DataTable dtable = dataSet.Tables[0];
-
-            listView.Items.Clear();
-
-            for (int i = 0; i < dtable.Rows.Count; i++)
-            {
-                DataRow drow = dtable.Rows[i];
-
-                if (drow.RowState != DataRowState.Deleted)
-                {
-                    ListViewItem lvi = new ListViewItem(drow[0].ToString());
-                    lvi.SubItems.Add(drow["Id"].ToString());
-                    lvi.SubItems.Add(drow["Firstname"].ToString());
-                    lvi.SubItems.Add(drow["Lastname"].ToString());
-
-                    listView.Items.Add(lvi);
-                }
-            }
-    }
     public async Task fillData()
     {
         try
@@ -156,22 +135,33 @@ public partial class Form1 : Form
                 Searchtxtbox.Text = null;
             }
     }
-
-    private void AddBtn_Click(object sender, EventArgs e)
+    private bool CheckSelectedItem()
     {
-
-    }
-
-    private void EditBtn_Click(object sender, EventArgs e)
-    {
-        bool isSelected=false;
-
         foreach (var item in listView.SelectedItems)
         {
             if (item is not null)
-                isSelected=true;
+                return true;
         }
-        if (cmbBox_Category.SelectedItem is null || !isSelected)
+        return false;
+    }
+    private void AddBtn_Click(object sender, EventArgs e)
+    {
+        if (cmbBox_Category.SelectedItem is null || !CheckSelectedItem())
+        {
+            MessageBox.Show("Please select any author", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+        else
+        {
+            AddAuthor addAuthor = new();
+            addAuthor.Show();
+        }
+    }
+   
+    private void EditBtn_Click(object sender, EventArgs e)
+    {
+       
+        if (cmbBox_Category.SelectedItem is null || !CheckSelectedItem())
         {
             MessageBox.Show("Please select any author","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
             return;
@@ -188,6 +178,43 @@ public partial class Form1 : Form
 
     private void DeleteBtn_Click(object sender, EventArgs e)
     {
+        if (cmbBox_Category.SelectedItem is null || !CheckSelectedItem())
+        {
+            MessageBox.Show("Please select any author", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
+        }
+        else
+        {
+            //Create Store Procedure
 
+            //CREATE PROCEDURE usp_DeleteAuthors
+            //@aId int
+            //AS
+
+            //DELETE FROM Authors WHERE Authors.Id = @aId
+            //RETURN 0
+            try
+            {
+                SqlCommand deleteCommand = new SqlCommand()
+                {
+                    CommandText = "dbo.usp_DeleteAuthors",
+                    Connection = conn,
+                    CommandType = CommandType.StoredProcedure,
+                };
+                deleteCommand.Parameters.AddWithValue("@aId", int.Parse(listView.SelectedItems[0].Text));
+
+                conn.Open();
+                deleteCommand.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

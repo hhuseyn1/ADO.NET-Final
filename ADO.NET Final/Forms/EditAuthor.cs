@@ -10,7 +10,6 @@ public partial class EditAuthor : Form
 {
     SqlConnection conn=null;
     SqlCommand command=null;
-    SqlDataAdapter dataAdapter = null;
     string connectionString = null;
     int id;
     public EditAuthor(int id)
@@ -57,6 +56,15 @@ public partial class EditAuthor : Form
 
     private void SaveBtn_Click(object sender, EventArgs e)
     {
+        //Create store procedure
+
+        //CREATE PROCEDURE usp_UpdateAuthors
+        //@aId int,
+        //@aFirstName nvarchar(20),
+        //@aLastName nvarchar(20)
+        //AS
+        //UPDATE Authors SET FirstName = @aFirstName,LastName = @aLastName WHERE Id = @aId
+        //RETURN 0
         try
         {
             SqlCommand updateCommand = new SqlCommand()
@@ -71,25 +79,7 @@ public partial class EditAuthor : Form
 
             conn.Open() ;
             updateCommand.ExecuteNonQuery();
-            //updateCommand.Parameters.Add(new SqlParameter("@aId", SqlDbType.Int));
-            //updateCommand.Parameters["@aId"].SourceVersion = DataRowVersion.Original;
-            //updateCommand.Parameters["@aId"].SourceColumn = "Id";
-
-            //updateCommand.Parameters.Add(new SqlParameter("@aFirstname", SqlDbType.NVarChar));
-            //updateCommand.Parameters["@aFirstname"].SourceVersion = DataRowVersion.Original;
-            //updateCommand.Parameters["@aFirstname"].SourceColumn = "Firstname";
-
-            //updateCommand.Parameters.Add(new SqlParameter("@aLastname", SqlDbType.NVarChar));
-            //updateCommand.Parameters["@aLastname"].SourceVersion = DataRowVersion.Original;
-            //updateCommand.Parameters["@aLastname"].SourceColumn = "Lastname";
-
-            //DataSet dataSet = new DataSet();
-            //dataAdapter = new SqlDataAdapter("SELECT * FROM Authors",conn);
-            //dataAdapter.Fill(dataSet, "myTable");
-            //dataAdapter.UpdateCommand = updateCommand;
             
-            //Form1 form1= new Form1();
-            //form1.setLvi(dataSet);
         }
         catch (Exception ex)
         {
@@ -101,6 +91,7 @@ public partial class EditAuthor : Form
             LastNametxtbox.Text = null;
             FirstNametxtbox.Text = null;
             Idtxtbox.Text = null;
+            this.Close();
         }
     }
 
@@ -109,7 +100,7 @@ public partial class EditAuthor : Form
         LastNametxtbox.Text = null;
         FirstNametxtbox.Text = null;
         Idtxtbox.Text = null;
-        Application.Exit();
+        this.Close();
     }
 
 }
