@@ -61,31 +61,37 @@ public partial class EditAuthor : Form
         {
             SqlCommand updateCommand = new SqlCommand()
             {
-                CommandText = "usp_UpdateAuthors",
+                CommandText = "dbo.usp_UpdateAuthors",
                 Connection = conn,
                 CommandType = CommandType.StoredProcedure,
             };
+            updateCommand.Parameters.AddWithValue("@aId", int.Parse(Idtxtbox.Text));
+            updateCommand.Parameters.AddWithValue("@aFirstname",FirstNametxtbox.Text);
+            updateCommand.Parameters.AddWithValue("@aLastname", LastNametxtbox.Text);
 
+            conn.Open() ;
+            updateCommand.ExecuteNonQuery();
+            //updateCommand.Parameters.Add(new SqlParameter("@aId", SqlDbType.Int));
+            //updateCommand.Parameters["@aId"].SourceVersion = DataRowVersion.Original;
+            //updateCommand.Parameters["@aId"].SourceColumn = "Id";
 
-            updateCommand.Parameters.Add(new SqlParameter("@aId", SqlDbType.Int));
-            updateCommand.Parameters["@aId"].SourceVersion = DataRowVersion.Original;
-            updateCommand.Parameters["@aId"].SourceColumn = "Id";
+            //updateCommand.Parameters.Add(new SqlParameter("@aFirstname", SqlDbType.NVarChar));
+            //updateCommand.Parameters["@aFirstname"].SourceVersion = DataRowVersion.Original;
+            //updateCommand.Parameters["@aFirstname"].SourceColumn = "Firstname";
 
-            updateCommand.Parameters.Add(new SqlParameter("@aFirstname", SqlDbType.NVarChar));
-            updateCommand.Parameters["@aFirstname"].SourceVersion = DataRowVersion.Original;
-            updateCommand.Parameters["@aFirstname"].SourceColumn = "Firstname";
+            //updateCommand.Parameters.Add(new SqlParameter("@aLastname", SqlDbType.NVarChar));
+            //updateCommand.Parameters["@aLastname"].SourceVersion = DataRowVersion.Original;
+            //updateCommand.Parameters["@aLastname"].SourceColumn = "Lastname";
 
-            updateCommand.Parameters.Add(new SqlParameter("@aLastname", SqlDbType.NVarChar));
-            updateCommand.Parameters["@aLastname"].SourceVersion = DataRowVersion.Original;
-            updateCommand.Parameters["@aLastname"].SourceColumn = "Lastname";
-
-            DataSet dataSet = new DataSet();
-            dataAdapter = new SqlDataAdapter("SELECT * FROM Authors",conn);
-            dataAdapter.Fill(dataSet, "myTable");
-            dataAdapter.UpdateCommand = updateCommand;
-             
+            //DataSet dataSet = new DataSet();
+            //dataAdapter = new SqlDataAdapter("SELECT * FROM Authors",conn);
+            //dataAdapter.Fill(dataSet, "myTable");
+            //dataAdapter.UpdateCommand = updateCommand;
+            
+            //Form1 form1= new Form1();
+            //form1.setLvi(dataSet);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
         }
@@ -96,7 +102,6 @@ public partial class EditAuthor : Form
             FirstNametxtbox.Text = null;
             Idtxtbox.Text = null;
         }
-        Application.Exit();
     }
 
     private void CancelBtn_Click(object sender, EventArgs e)

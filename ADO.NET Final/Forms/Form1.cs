@@ -27,7 +27,27 @@ public partial class Form1 : Form
         conn = new SqlConnection(connectionString);
         fillData();
     }
+    public void setLvi(DataSet dataSet)
+    {
+            DataTable dtable = dataSet.Tables[0];
 
+            listView.Items.Clear();
+
+            for (int i = 0; i < dtable.Rows.Count; i++)
+            {
+                DataRow drow = dtable.Rows[i];
+
+                if (drow.RowState != DataRowState.Deleted)
+                {
+                    ListViewItem lvi = new ListViewItem(drow[0].ToString());
+                    lvi.SubItems.Add(drow["Id"].ToString());
+                    lvi.SubItems.Add(drow["Firstname"].ToString());
+                    lvi.SubItems.Add(drow["Lastname"].ToString());
+
+                    listView.Items.Add(lvi);
+                }
+            }
+    }
     public async Task fillData()
     {
         try
