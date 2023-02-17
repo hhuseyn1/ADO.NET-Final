@@ -1,6 +1,6 @@
 ﻿namespace ADO.NET_Final
 {
-    partial class EditAuthor
+    partial class EditProduct
     {
         /// <summary>
         /// Required designer variable.

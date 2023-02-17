@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ADO.NET_Final
 {
-    public partial class AddAuthor : Form
+    public partial class AddProduct : Form
     {
-        public AddAuthor()
+        public AddProduct()
         {
             InitializeComponent();
         }

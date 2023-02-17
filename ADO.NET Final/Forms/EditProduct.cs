@@ -6,13 +6,13 @@ using System.Windows.Forms;
 
 namespace ADO.NET_Final;
 
-public partial class EditAuthor : Form
+public partial class EditProduct : Form
 {
     SqlConnection conn=null;
     SqlCommand command=null;
     string connectionString = null;
     int id;
-    public EditAuthor(int id)
+    public EditProduct(int id)
     {
         InitializeComponent();
         this.id= id;

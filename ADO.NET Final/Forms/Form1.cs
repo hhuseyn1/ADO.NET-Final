@@ -33,7 +33,7 @@ public partial class Form1 : Form
         {
             conn?.Open();
 
-            command = new SqlCommand("SELECT Categories.[Name] AS [Category] FROM Categories", conn);
+            command = new SqlCommand("SELECT Category.[Name] AS [Category] FROM Category", conn);
             reader = await command.ExecuteReaderAsync();
             cmbBox_Category.Items.Add("-");
             while (reader.Read())
@@ -63,23 +63,31 @@ public partial class Form1 : Form
             {
                 conn?.Open();
                 listView.Columns.Add("Id");
-                listView.Columns.Add("Firstname");
-                listView.Columns.Add("Lastname");
-                command = new("SELECT Authors.Id AS [Id] , Authors.[FirstName] AS [FirstName] , Authors.[LastName] AS [LastName] FROM Authors,Books INNER JOIN Categories ON Id_Category = Categories.Id WHERE LOWER(Categories.[Name])=LOWER(@p1)  GROUP BY Authors.Id,Authors.FirstName,Authors.LastName", conn);
+                listView.Columns.Add("Name");
+                listView.Columns.Add("Price");
+                listView.Columns.Add("Quantity");
+                listView.Columns.Add("Rating");
+                listView.Columns.Add("CategoryId");
+                command = new("SELECT Product.Id AS [Id] ,Product.[Name] AS [Name],Product.[Price] AS [Price],Product.[Quantity] AS [Quantity],Product.[CategoryId] AS [CategoryId],Product.[Rating] AS [Rating] FROM Product INNER JOIN Category ON CategoryId = Category.Id WHERE LOWER(Category.[Name])=LOWER(@p1)  GROUP BY Product.Id ,Product.[Name] ,Product.Price,Product.Quantity ,Product.CategoryId,Product.Rating", conn);
                 command.Parameters.Add("@p1", SqlDbType.NVarChar).Value = cmbBox_Category.SelectedItem.ToString();
 
                 listView.View = View.Details;
-                listView.Columns[1].Width += 100;
-                listView.Columns[2].Width += 100;
+                for (int i = 1; i < listView.Columns.Count-1; i++)
+                listView.Columns[i].Width += 100;
+
                 dataReader = await command.ExecuteReaderAsync();
                 while (dataReader.Read())
                 {
                     listView.Items.Add(dataReader["Id"].ToString());
                     for (int i = 0; i < listView.Items.Count; i++)
                     {
-                    listView.Items[i].SubItems.Add(dataReader["FirstName"].ToString());
-                    listView.Items[i].SubItems.Add(dataReader["LastName"].ToString());
+                    listView.Items[i].SubItems.Add(dataReader["Name"].ToString());
+                    listView.Items[i].SubItems.Add(dataReader["Price"].ToString());
+                    listView.Items[i].SubItems.Add(dataReader["Quantity"].ToString());
+                    listView.Items[i].SubItems.Add(dataReader["Rating"].ToString());
+                    listView.Items[i].SubItems.Add(dataReader["CategoryId"].ToString());
                     }
+
                 }
             }
             catch (Exception ex)
@@ -106,7 +114,7 @@ public partial class Form1 : Form
                     return;
                 }
 
-                command = new("SELECT Authors.Id AS [Id],Authors.[FirstName] AS [Firstname] , Authors.[LastName] AS [Lastname] FROM Authors,Books INNER JOIN Categories ON Id_Category = Categories.Id WHERE LOWER(Categories.[Name])=LOWER(@p1) AND LOWER(Authors.[FirstName]) LIKE '%' + LOWER(@st) +'%' OR LOWER(Authors.[LastName]) LIKE '%' + LOWER(@st) + '%' GROUP BY Authors.Id, Authors.[FirstName],Authors.[LastName]", conn);
+                command = new("SELECT Product.Id AS [Id] ,Product.[Name] AS [Name],Product.[Price] AS [Price],Product.[Quantity] AS [Quantity],Product.[CategoryId] AS [CategoryId],Product.[Rating] AS [Rating] FROM Product INNER JOIN Category ON CategoryId = Category.Id WHERE LOWER(Category.[Name])=LOWER(@p1) AND LOWER(Product.[Name]) LIKE '%' + LOWER(@st) +'%' GROUP BY Product.Id ,Product.[Name] ,Product.Price,Product.Quantity ,Product.CategoryId,Product.Rating", conn);
                 command.Parameters.AddWithValue("@st", SqlDbType.Text).Value = Searchtxtbox.Text.ToString();
                 command.Parameters.Add("@p1", SqlDbType.NVarChar).Value = cmbBox_Category.SelectedItem.ToString();
            
@@ -120,8 +128,11 @@ public partial class Form1 : Form
                 listView.Items.Add(dataReader[0].ToString());
                 for (int i = 0; i < listView.Items.Count; i++)
                 {
-                    listView.Items[i].SubItems.Add(dataReader["FirstName"].ToString());
-                    listView.Items[i].SubItems.Add(dataReader["LastName"].ToString());
+                    listView.Items[i].SubItems.Add(dataReader["Name"].ToString());
+                    listView.Items[i].SubItems.Add(dataReader["Price"].ToString());
+                    listView.Items[i].SubItems.Add(dataReader["Quantity"].ToString());
+                    listView.Items[i].SubItems.Add(dataReader["Rating"].ToString());
+                    listView.Items[i].SubItems.Add(dataReader["CategoryId"].ToString());
                 }
             }
             }
@@ -153,7 +164,7 @@ public partial class Form1 : Form
         }
         else
         {
-            AddAuthor addAuthor = new();
+            AddProduct addAuthor = new();
             addAuthor.Show();
         }
     }
@@ -170,7 +181,7 @@ public partial class Form1 : Form
         {
             int id = 0;
             id = Int32.Parse(listView.SelectedItems[0].Text);
-            EditAuthor editAuthor = new(id);
+            EditProduct editAuthor = new(id);
             editAuthor.Show();
         }
 
