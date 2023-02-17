@@ -38,8 +38,8 @@ public partial class EditProduct : Form
         DbDataReader dataReader = await command.ExecuteReaderAsync();
         Idtxtbox.Text=id.ToString();
             while(dataReader.Read()) {
-            FirstNametxtbox.Text = dataReader["FirstName"].ToString();
-            LastNametxtbox.Text = dataReader["LastName"].ToString();
+            Nametxtbox.Text = dataReader["FirstName"].ToString();
+            Ratingtxtbox.Text = dataReader["LastName"].ToString();
             }
         }
         catch (Exception ex)
@@ -74,8 +74,8 @@ public partial class EditProduct : Form
                 CommandType = CommandType.StoredProcedure,
             };
             updateCommand.Parameters.AddWithValue("@aId", int.Parse(Idtxtbox.Text));
-            updateCommand.Parameters.AddWithValue("@aFirstname",FirstNametxtbox.Text);
-            updateCommand.Parameters.AddWithValue("@aLastname", LastNametxtbox.Text);
+            updateCommand.Parameters.AddWithValue("@aFirstname",Nametxtbox.Text);
+            updateCommand.Parameters.AddWithValue("@aLastname", Ratingtxtbox.Text);
 
             conn.Open() ;
             updateCommand.ExecuteNonQuery();
@@ -88,8 +88,8 @@ public partial class EditProduct : Form
         finally
         {
             conn.Close();
-            LastNametxtbox.Text = null;
-            FirstNametxtbox.Text = null;
+            Ratingtxtbox.Text = null;
+            Nametxtbox.Text = null;
             Idtxtbox.Text = null;
             this.Close();
         }
@@ -97,8 +97,8 @@ public partial class EditProduct : Form
 
     private void CancelBtn_Click(object sender, EventArgs e)
     {
-        LastNametxtbox.Text = null;
-        FirstNametxtbox.Text = null;
+        Ratingtxtbox.Text = null;
+        Nametxtbox.Text = null;
         Idtxtbox.Text = null;
         this.Close();
     }

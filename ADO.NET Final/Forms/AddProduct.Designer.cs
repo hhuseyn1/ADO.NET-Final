@@ -28,101 +28,145 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CancelBtn = new System.Windows.Forms.Button();
-            this.AddBtn = new System.Windows.Forms.Button();
-            this.LastNametxtbox = new System.Windows.Forms.TextBox();
-            this.FirstNametxtbox = new System.Windows.Forms.TextBox();
-            this.Idtxtbox = new System.Windows.Forms.TextBox();
-            this.LastNameLbl = new System.Windows.Forms.Label();
-            this.FirstNameLbl = new System.Windows.Forms.Label();
-            this.IdLbl = new System.Windows.Forms.Label();
+            this.CatIdtxtbox = new System.Windows.Forms.TextBox();
+            this.Quantitytxtbox = new System.Windows.Forms.TextBox();
+            this.Pricetxtbox = new System.Windows.Forms.TextBox();
+            this.CatIdlbl = new System.Windows.Forms.Label();
+            this.Quantitylbl = new System.Windows.Forms.Label();
+            this.Pricelbl = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.SaveBtn = new System.Windows.Forms.Button();
+            this.Ratingtxtbox = new System.Windows.Forms.TextBox();
+            this.Nametxtbox = new System.Windows.Forms.TextBox();
+            this.Ratinglbl = new System.Windows.Forms.Label();
+            this.NameLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // CancelBtn
+            // CatIdtxtbox
             // 
-            this.CancelBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CancelBtn.Location = new System.Drawing.Point(140, 281);
-            this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(79, 27);
-            this.CancelBtn.TabIndex = 15;
-            this.CancelBtn.Text = "Cancel";
-            this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CatIdtxtbox.Location = new System.Drawing.Point(37, 124);
+            this.CatIdtxtbox.Name = "CatIdtxtbox";
+            this.CatIdtxtbox.Size = new System.Drawing.Size(141, 23);
+            this.CatIdtxtbox.TabIndex = 29;
             // 
-            // AddBtn
+            // Quantitytxtbox
             // 
-            this.AddBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AddBtn.Location = new System.Drawing.Point(30, 281);
-            this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(79, 27);
-            this.AddBtn.TabIndex = 14;
-            this.AddBtn.Text = "Add";
-            this.AddBtn.UseVisualStyleBackColor = true;
+            this.Quantitytxtbox.Location = new System.Drawing.Point(264, 126);
+            this.Quantitytxtbox.Name = "Quantitytxtbox";
+            this.Quantitytxtbox.Size = new System.Drawing.Size(141, 23);
+            this.Quantitytxtbox.TabIndex = 28;
             // 
-            // LastNametxtbox
+            // Pricetxtbox
             // 
-            this.LastNametxtbox.Location = new System.Drawing.Point(30, 213);
-            this.LastNametxtbox.Name = "LastNametxtbox";
-            this.LastNametxtbox.Size = new System.Drawing.Size(141, 23);
-            this.LastNametxtbox.TabIndex = 13;
+            this.Pricetxtbox.Location = new System.Drawing.Point(264, 54);
+            this.Pricetxtbox.Name = "Pricetxtbox";
+            this.Pricetxtbox.Size = new System.Drawing.Size(141, 23);
+            this.Pricetxtbox.TabIndex = 27;
             // 
-            // FirstNametxtbox
+            // CatIdlbl
             // 
-            this.FirstNametxtbox.Location = new System.Drawing.Point(30, 131);
-            this.FirstNametxtbox.Name = "FirstNametxtbox";
-            this.FirstNametxtbox.Size = new System.Drawing.Size(141, 23);
-            this.FirstNametxtbox.TabIndex = 12;
+            this.CatIdlbl.AutoSize = true;
+            this.CatIdlbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CatIdlbl.Location = new System.Drawing.Point(37, 104);
+            this.CatIdlbl.Name = "CatIdlbl";
+            this.CatIdlbl.Size = new System.Drawing.Size(80, 17);
+            this.CatIdlbl.TabIndex = 26;
+            this.CatIdlbl.Text = "Category Id";
             // 
-            // Idtxtbox
+            // Quantitylbl
             // 
-            this.Idtxtbox.Location = new System.Drawing.Point(30, 59);
-            this.Idtxtbox.Name = "Idtxtbox";
-            this.Idtxtbox.Size = new System.Drawing.Size(141, 23);
-            this.Idtxtbox.TabIndex = 11;
+            this.Quantitylbl.AutoSize = true;
+            this.Quantitylbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Quantitylbl.Location = new System.Drawing.Point(264, 106);
+            this.Quantitylbl.Name = "Quantitylbl";
+            this.Quantitylbl.Size = new System.Drawing.Size(61, 17);
+            this.Quantitylbl.TabIndex = 25;
+            this.Quantitylbl.Text = "Quantity";
             // 
-            // LastNameLbl
+            // Pricelbl
             // 
-            this.LastNameLbl.AutoSize = true;
-            this.LastNameLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LastNameLbl.Location = new System.Drawing.Point(30, 193);
-            this.LastNameLbl.Name = "LastNameLbl";
-            this.LastNameLbl.Size = new System.Drawing.Size(68, 17);
-            this.LastNameLbl.TabIndex = 10;
-            this.LastNameLbl.Text = "LastName";
+            this.Pricelbl.AutoSize = true;
+            this.Pricelbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Pricelbl.Location = new System.Drawing.Point(264, 34);
+            this.Pricelbl.Name = "Pricelbl";
+            this.Pricelbl.Size = new System.Drawing.Size(37, 17);
+            this.Pricelbl.TabIndex = 24;
+            this.Pricelbl.Text = "Price";
             // 
-            // FirstNameLbl
+            // button1
             // 
-            this.FirstNameLbl.AutoSize = true;
-            this.FirstNameLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.FirstNameLbl.Location = new System.Drawing.Point(30, 111);
-            this.FirstNameLbl.Name = "FirstNameLbl";
-            this.FirstNameLbl.Size = new System.Drawing.Size(70, 17);
-            this.FirstNameLbl.TabIndex = 9;
-            this.FirstNameLbl.Text = "FirstName";
+            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.Location = new System.Drawing.Point(264, 245);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(79, 27);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Cancel";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
-            // IdLbl
+            // SaveBtn
             // 
-            this.IdLbl.AutoSize = true;
-            this.IdLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.IdLbl.Location = new System.Drawing.Point(30, 39);
-            this.IdLbl.Name = "IdLbl";
-            this.IdLbl.Size = new System.Drawing.Size(20, 17);
-            this.IdLbl.TabIndex = 8;
-            this.IdLbl.Text = "Id";
+            this.SaveBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.SaveBtn.Location = new System.Drawing.Point(111, 245);
+            this.SaveBtn.Name = "SaveBtn";
+            this.SaveBtn.Size = new System.Drawing.Size(79, 27);
+            this.SaveBtn.TabIndex = 22;
+            this.SaveBtn.Text = "Save";
+            this.SaveBtn.UseVisualStyleBackColor = true;
+            this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
-            // AddAuthor
+            // Ratingtxtbox
+            // 
+            this.Ratingtxtbox.Location = new System.Drawing.Point(143, 190);
+            this.Ratingtxtbox.Name = "Ratingtxtbox";
+            this.Ratingtxtbox.Size = new System.Drawing.Size(141, 23);
+            this.Ratingtxtbox.TabIndex = 21;
+            // 
+            // Nametxtbox
+            // 
+            this.Nametxtbox.Location = new System.Drawing.Point(37, 54);
+            this.Nametxtbox.Name = "Nametxtbox";
+            this.Nametxtbox.Size = new System.Drawing.Size(141, 23);
+            this.Nametxtbox.TabIndex = 20;
+            // 
+            // Ratinglbl
+            // 
+            this.Ratinglbl.AutoSize = true;
+            this.Ratinglbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Ratinglbl.Location = new System.Drawing.Point(143, 170);
+            this.Ratinglbl.Name = "Ratinglbl";
+            this.Ratinglbl.Size = new System.Drawing.Size(47, 17);
+            this.Ratinglbl.TabIndex = 18;
+            this.Ratinglbl.Text = "Rating";
+            // 
+            // NameLbl
+            // 
+            this.NameLbl.AutoSize = true;
+            this.NameLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NameLbl.Location = new System.Drawing.Point(37, 34);
+            this.NameLbl.Name = "NameLbl";
+            this.NameLbl.Size = new System.Drawing.Size(44, 17);
+            this.NameLbl.TabIndex = 17;
+            this.NameLbl.Text = "Name";
+            // 
+            // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(309, 408);
-            this.Controls.Add(this.CancelBtn);
-            this.Controls.Add(this.AddBtn);
-            this.Controls.Add(this.LastNametxtbox);
-            this.Controls.Add(this.FirstNametxtbox);
-            this.Controls.Add(this.Idtxtbox);
-            this.Controls.Add(this.LastNameLbl);
-            this.Controls.Add(this.FirstNameLbl);
-            this.Controls.Add(this.IdLbl);
-            this.Name = "AddAuthor";
+            this.ClientSize = new System.Drawing.Size(490, 340);
+            this.Controls.Add(this.CatIdtxtbox);
+            this.Controls.Add(this.Quantitytxtbox);
+            this.Controls.Add(this.Pricetxtbox);
+            this.Controls.Add(this.CatIdlbl);
+            this.Controls.Add(this.Quantitylbl);
+            this.Controls.Add(this.Pricelbl);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.SaveBtn);
+            this.Controls.Add(this.Ratingtxtbox);
+            this.Controls.Add(this.Nametxtbox);
+            this.Controls.Add(this.Ratinglbl);
+            this.Controls.Add(this.NameLbl);
+            this.Name = "AddProduct";
             this.Text = "AddAuthor";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -131,13 +175,17 @@
 
         #endregion
 
-        private Button CancelBtn;
-        private Button AddBtn;
-        private TextBox LastNametxtbox;
-        private TextBox FirstNametxtbox;
-        private TextBox Idtxtbox;
-        private Label LastNameLbl;
-        private Label FirstNameLbl;
-        private Label IdLbl;
+        private TextBox CatIdtxtbox;
+        private TextBox Quantitytxtbox;
+        private TextBox Pricetxtbox;
+        private Label CatIdlbl;
+        private Label Quantitylbl;
+        private Label Pricelbl;
+        private Button button1;
+        private Button SaveBtn;
+        private TextBox Ratingtxtbox;
+        private TextBox Nametxtbox;
+        private Label Ratinglbl;
+        private Label NameLbl;
     }
 }

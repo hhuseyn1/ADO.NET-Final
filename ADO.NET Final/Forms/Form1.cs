@@ -157,16 +157,8 @@ public partial class Form1 : Form
     }
     private void AddBtn_Click(object sender, EventArgs e)
     {
-        if (cmbBox_Category.SelectedItem is null || !CheckSelectedItem())
-        {
-            MessageBox.Show("Please select any author", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            return;
-        }
-        else
-        {
-            AddProduct addAuthor = new();
-            addAuthor.Show();
-        }
+     AddProduct addAuthor = new();
+     addAuthor.Show();
     }
    
     private void EditBtn_Click(object sender, EventArgs e)
@@ -198,21 +190,21 @@ public partial class Form1 : Form
         {
             //Create Store Procedure
 
-            //CREATE PROCEDURE usp_DeleteAuthors
-            //@aId int
+            //CREATE PROCEDURE usp_DeleteProduct
+            //@pId int
             //AS
 
-            //DELETE FROM Authors WHERE Authors.Id = @aId
+            //DELETE FROM Product WHERE Product.Id = @pId
             //RETURN 0
             try
             {
                 SqlCommand deleteCommand = new SqlCommand()
                 {
-                    CommandText = "dbo.usp_DeleteAuthors",
+                    CommandText = "dbo.usp_DeleteProduct",
                     Connection = conn,
                     CommandType = CommandType.StoredProcedure,
                 };
-                deleteCommand.Parameters.AddWithValue("@aId", int.Parse(listView.SelectedItems[0].Text));
+                deleteCommand.Parameters.AddWithValue("@pId", int.Parse(listView.SelectedItems[0].Text));
 
                 conn.Open();
                 deleteCommand.ExecuteNonQuery();

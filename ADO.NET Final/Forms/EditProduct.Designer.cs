@@ -29,13 +29,19 @@
         private void InitializeComponent()
         {
             this.IdLbl = new System.Windows.Forms.Label();
-            this.FirstNameLbl = new System.Windows.Forms.Label();
-            this.LastNameLbl = new System.Windows.Forms.Label();
+            this.NameLbl = new System.Windows.Forms.Label();
+            this.Ratinglbl = new System.Windows.Forms.Label();
             this.Idtxtbox = new System.Windows.Forms.TextBox();
-            this.FirstNametxtbox = new System.Windows.Forms.TextBox();
-            this.LastNametxtbox = new System.Windows.Forms.TextBox();
+            this.Nametxtbox = new System.Windows.Forms.TextBox();
+            this.Ratingtxtbox = new System.Windows.Forms.TextBox();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
+            this.CatIdtxtbox = new System.Windows.Forms.TextBox();
+            this.Quantitytxtbox = new System.Windows.Forms.TextBox();
+            this.Pricetxtbox = new System.Windows.Forms.TextBox();
+            this.CatIdlbl = new System.Windows.Forms.Label();
+            this.Quantitylbl = new System.Windows.Forms.Label();
+            this.Pricelbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // IdLbl
@@ -48,25 +54,25 @@
             this.IdLbl.TabIndex = 0;
             this.IdLbl.Text = "Id";
             // 
-            // FirstNameLbl
+            // NameLbl
             // 
-            this.FirstNameLbl.AutoSize = true;
-            this.FirstNameLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.FirstNameLbl.Location = new System.Drawing.Point(23, 94);
-            this.FirstNameLbl.Name = "FirstNameLbl";
-            this.FirstNameLbl.Size = new System.Drawing.Size(70, 17);
-            this.FirstNameLbl.TabIndex = 1;
-            this.FirstNameLbl.Text = "FirstName";
+            this.NameLbl.AutoSize = true;
+            this.NameLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.NameLbl.Location = new System.Drawing.Point(23, 94);
+            this.NameLbl.Name = "NameLbl";
+            this.NameLbl.Size = new System.Drawing.Size(44, 17);
+            this.NameLbl.TabIndex = 1;
+            this.NameLbl.Text = "Name";
             // 
-            // LastNameLbl
+            // Ratinglbl
             // 
-            this.LastNameLbl.AutoSize = true;
-            this.LastNameLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LastNameLbl.Location = new System.Drawing.Point(23, 176);
-            this.LastNameLbl.Name = "LastNameLbl";
-            this.LastNameLbl.Size = new System.Drawing.Size(68, 17);
-            this.LastNameLbl.TabIndex = 2;
-            this.LastNameLbl.Text = "LastName";
+            this.Ratinglbl.AutoSize = true;
+            this.Ratinglbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Ratinglbl.Location = new System.Drawing.Point(238, 164);
+            this.Ratinglbl.Name = "Ratinglbl";
+            this.Ratinglbl.Size = new System.Drawing.Size(47, 17);
+            this.Ratinglbl.TabIndex = 2;
+            this.Ratinglbl.Text = "Rating";
             // 
             // Idtxtbox
             // 
@@ -75,24 +81,24 @@
             this.Idtxtbox.Size = new System.Drawing.Size(141, 23);
             this.Idtxtbox.TabIndex = 3;
             // 
-            // FirstNametxtbox
+            // Nametxtbox
             // 
-            this.FirstNametxtbox.Location = new System.Drawing.Point(23, 114);
-            this.FirstNametxtbox.Name = "FirstNametxtbox";
-            this.FirstNametxtbox.Size = new System.Drawing.Size(141, 23);
-            this.FirstNametxtbox.TabIndex = 4;
+            this.Nametxtbox.Location = new System.Drawing.Point(23, 114);
+            this.Nametxtbox.Name = "Nametxtbox";
+            this.Nametxtbox.Size = new System.Drawing.Size(141, 23);
+            this.Nametxtbox.TabIndex = 4;
             // 
-            // LastNametxtbox
+            // Ratingtxtbox
             // 
-            this.LastNametxtbox.Location = new System.Drawing.Point(23, 196);
-            this.LastNametxtbox.Name = "LastNametxtbox";
-            this.LastNametxtbox.Size = new System.Drawing.Size(141, 23);
-            this.LastNametxtbox.TabIndex = 5;
+            this.Ratingtxtbox.Location = new System.Drawing.Point(238, 184);
+            this.Ratingtxtbox.Name = "Ratingtxtbox";
+            this.Ratingtxtbox.Size = new System.Drawing.Size(141, 23);
+            this.Ratingtxtbox.TabIndex = 5;
             // 
             // SaveBtn
             // 
             this.SaveBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.SaveBtn.Location = new System.Drawing.Point(23, 264);
+            this.SaveBtn.Location = new System.Drawing.Point(85, 233);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(79, 27);
             this.SaveBtn.TabIndex = 6;
@@ -103,7 +109,7 @@
             // CancelBtn
             // 
             this.CancelBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CancelBtn.Location = new System.Drawing.Point(133, 264);
+            this.CancelBtn.Location = new System.Drawing.Point(238, 233);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(79, 27);
             this.CancelBtn.TabIndex = 7;
@@ -111,20 +117,77 @@
             this.CancelBtn.UseVisualStyleBackColor = true;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
-            // EditAuthor
+            // CatIdtxtbox
+            // 
+            this.CatIdtxtbox.Location = new System.Drawing.Point(23, 184);
+            this.CatIdtxtbox.Name = "CatIdtxtbox";
+            this.CatIdtxtbox.Size = new System.Drawing.Size(141, 23);
+            this.CatIdtxtbox.TabIndex = 13;
+            // 
+            // Quantitytxtbox
+            // 
+            this.Quantitytxtbox.Location = new System.Drawing.Point(238, 114);
+            this.Quantitytxtbox.Name = "Quantitytxtbox";
+            this.Quantitytxtbox.Size = new System.Drawing.Size(141, 23);
+            this.Quantitytxtbox.TabIndex = 12;
+            // 
+            // Pricetxtbox
+            // 
+            this.Pricetxtbox.Location = new System.Drawing.Point(238, 42);
+            this.Pricetxtbox.Name = "Pricetxtbox";
+            this.Pricetxtbox.Size = new System.Drawing.Size(141, 23);
+            this.Pricetxtbox.TabIndex = 11;
+            // 
+            // CatIdlbl
+            // 
+            this.CatIdlbl.AutoSize = true;
+            this.CatIdlbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CatIdlbl.Location = new System.Drawing.Point(23, 164);
+            this.CatIdlbl.Name = "CatIdlbl";
+            this.CatIdlbl.Size = new System.Drawing.Size(80, 17);
+            this.CatIdlbl.TabIndex = 10;
+            this.CatIdlbl.Text = "Category Id";
+            // 
+            // Quantitylbl
+            // 
+            this.Quantitylbl.AutoSize = true;
+            this.Quantitylbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Quantitylbl.Location = new System.Drawing.Point(238, 94);
+            this.Quantitylbl.Name = "Quantitylbl";
+            this.Quantitylbl.Size = new System.Drawing.Size(61, 17);
+            this.Quantitylbl.TabIndex = 9;
+            this.Quantitylbl.Text = "Quantity";
+            // 
+            // Pricelbl
+            // 
+            this.Pricelbl.AutoSize = true;
+            this.Pricelbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Pricelbl.Location = new System.Drawing.Point(238, 22);
+            this.Pricelbl.Name = "Pricelbl";
+            this.Pricelbl.Size = new System.Drawing.Size(37, 17);
+            this.Pricelbl.TabIndex = 8;
+            this.Pricelbl.Text = "Price";
+            // 
+            // EditProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(280, 375);
+            this.ClientSize = new System.Drawing.Size(440, 322);
+            this.Controls.Add(this.CatIdtxtbox);
+            this.Controls.Add(this.Quantitytxtbox);
+            this.Controls.Add(this.Pricetxtbox);
+            this.Controls.Add(this.CatIdlbl);
+            this.Controls.Add(this.Quantitylbl);
+            this.Controls.Add(this.Pricelbl);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.SaveBtn);
-            this.Controls.Add(this.LastNametxtbox);
-            this.Controls.Add(this.FirstNametxtbox);
+            this.Controls.Add(this.Ratingtxtbox);
+            this.Controls.Add(this.Nametxtbox);
             this.Controls.Add(this.Idtxtbox);
-            this.Controls.Add(this.LastNameLbl);
-            this.Controls.Add(this.FirstNameLbl);
+            this.Controls.Add(this.Ratinglbl);
+            this.Controls.Add(this.NameLbl);
             this.Controls.Add(this.IdLbl);
-            this.Name = "EditAuthor";
+            this.Name = "EditProduct";
             this.Text = "EditAuthor";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -134,12 +197,18 @@
         #endregion
 
         private Label IdLbl;
-        private Label FirstNameLbl;
-        private Label LastNameLbl;
+        private Label NameLbl;
+        private Label Ratinglbl;
         private TextBox Idtxtbox;
-        private TextBox FirstNametxtbox;
-        private TextBox LastNametxtbox;
+        private TextBox Nametxtbox;
+        private TextBox Ratingtxtbox;
         private Button SaveBtn;
         private Button CancelBtn;
+        private TextBox CatIdtxtbox;
+        private TextBox Quantitytxtbox;
+        private TextBox Pricetxtbox;
+        private Label CatIdlbl;
+        private Label Quantitylbl;
+        private Label Pricelbl;
     }
 }
