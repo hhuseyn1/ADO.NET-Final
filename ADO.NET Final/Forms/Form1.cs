@@ -23,7 +23,7 @@ public partial class Form1 : Form
         var configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory() + "../../../../")
                               .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true).Build();
 
-        connectionString = configuration.GetConnectionString("SqlServerLibrary");
+        connectionString = configuration.GetConnectionString("ProductDb");
         conn = new SqlConnection(connectionString);
         fillData();
     }
