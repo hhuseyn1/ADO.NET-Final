@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.IdLbl = new System.Windows.Forms.Label();
             this.NameLbl = new System.Windows.Forms.Label();
             this.Ratinglbl = new System.Windows.Forms.Label();
-            this.Idtxtbox = new System.Windows.Forms.TextBox();
             this.Nametxtbox = new System.Windows.Forms.TextBox();
             this.Ratingtxtbox = new System.Windows.Forms.TextBox();
             this.SaveBtn = new System.Windows.Forms.Button();
@@ -44,21 +42,11 @@
             this.Pricelbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // IdLbl
-            // 
-            this.IdLbl.AutoSize = true;
-            this.IdLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.IdLbl.Location = new System.Drawing.Point(23, 22);
-            this.IdLbl.Name = "IdLbl";
-            this.IdLbl.Size = new System.Drawing.Size(20, 17);
-            this.IdLbl.TabIndex = 0;
-            this.IdLbl.Text = "Id";
-            // 
             // NameLbl
             // 
             this.NameLbl.AutoSize = true;
             this.NameLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NameLbl.Location = new System.Drawing.Point(23, 94);
+            this.NameLbl.Location = new System.Drawing.Point(25, 22);
             this.NameLbl.Name = "NameLbl";
             this.NameLbl.Size = new System.Drawing.Size(44, 17);
             this.NameLbl.TabIndex = 1;
@@ -68,29 +56,22 @@
             // 
             this.Ratinglbl.AutoSize = true;
             this.Ratinglbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Ratinglbl.Location = new System.Drawing.Point(238, 164);
+            this.Ratinglbl.Location = new System.Drawing.Point(119, 164);
             this.Ratinglbl.Name = "Ratinglbl";
             this.Ratinglbl.Size = new System.Drawing.Size(47, 17);
             this.Ratinglbl.TabIndex = 2;
             this.Ratinglbl.Text = "Rating";
             // 
-            // Idtxtbox
-            // 
-            this.Idtxtbox.Location = new System.Drawing.Point(23, 42);
-            this.Idtxtbox.Name = "Idtxtbox";
-            this.Idtxtbox.Size = new System.Drawing.Size(141, 23);
-            this.Idtxtbox.TabIndex = 3;
-            // 
             // Nametxtbox
             // 
-            this.Nametxtbox.Location = new System.Drawing.Point(23, 114);
+            this.Nametxtbox.Location = new System.Drawing.Point(25, 42);
             this.Nametxtbox.Name = "Nametxtbox";
             this.Nametxtbox.Size = new System.Drawing.Size(141, 23);
             this.Nametxtbox.TabIndex = 4;
             // 
             // Ratingtxtbox
             // 
-            this.Ratingtxtbox.Location = new System.Drawing.Point(238, 184);
+            this.Ratingtxtbox.Location = new System.Drawing.Point(119, 184);
             this.Ratingtxtbox.Name = "Ratingtxtbox";
             this.Ratingtxtbox.Size = new System.Drawing.Size(141, 23);
             this.Ratingtxtbox.TabIndex = 5;
@@ -119,7 +100,7 @@
             // 
             // CatIdtxtbox
             // 
-            this.CatIdtxtbox.Location = new System.Drawing.Point(23, 184);
+            this.CatIdtxtbox.Location = new System.Drawing.Point(25, 112);
             this.CatIdtxtbox.Name = "CatIdtxtbox";
             this.CatIdtxtbox.Size = new System.Drawing.Size(141, 23);
             this.CatIdtxtbox.TabIndex = 13;
@@ -142,7 +123,7 @@
             // 
             this.CatIdlbl.AutoSize = true;
             this.CatIdlbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CatIdlbl.Location = new System.Drawing.Point(23, 164);
+            this.CatIdlbl.Location = new System.Drawing.Point(25, 92);
             this.CatIdlbl.Name = "CatIdlbl";
             this.CatIdlbl.Size = new System.Drawing.Size(80, 17);
             this.CatIdlbl.TabIndex = 10;
@@ -183,10 +164,8 @@
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.Ratingtxtbox);
             this.Controls.Add(this.Nametxtbox);
-            this.Controls.Add(this.Idtxtbox);
             this.Controls.Add(this.Ratinglbl);
             this.Controls.Add(this.NameLbl);
-            this.Controls.Add(this.IdLbl);
             this.Name = "EditProduct";
             this.Text = "EditAuthor";
             this.ResumeLayout(false);
@@ -195,11 +174,8 @@
         }
 
         #endregion
-
-        private Label IdLbl;
         private Label NameLbl;
         private Label Ratinglbl;
-        private TextBox Idtxtbox;
         private TextBox Nametxtbox;
         private TextBox Ratingtxtbox;
         private Button SaveBtn;

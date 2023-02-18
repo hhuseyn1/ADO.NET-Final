@@ -87,6 +87,7 @@ public partial class AddProduct : Form
         }
         finally
         {
+            conn.Close();
             ClearTextBox();
             this.Close();
         }

@@ -72,8 +72,8 @@ public partial class Form1 : Form
                 command.Parameters.Add("@p1", SqlDbType.NVarChar).Value = cmbBox_Category.SelectedItem.ToString();
 
                 listView.View = View.Details;
-                for (int i = 1; i < listView.Columns.Count-1; i++)
-                listView.Columns[i].Width += 100;
+                for (int i = 1; i < listView.Columns.Count - 1; i++)
+                    listView.Columns[i].Width += 100;
 
                 dataReader = await command.ExecuteReaderAsync();
                 while (dataReader.Read())
@@ -81,11 +81,11 @@ public partial class Form1 : Form
                     listView.Items.Add(dataReader["Id"].ToString());
                     for (int i = 0; i < listView.Items.Count; i++)
                     {
-                    listView.Items[i].SubItems.Add(dataReader["Name"].ToString());
-                    listView.Items[i].SubItems.Add(dataReader["Price"].ToString());
-                    listView.Items[i].SubItems.Add(dataReader["Quantity"].ToString());
-                    listView.Items[i].SubItems.Add(dataReader["Rating"].ToString());
-                    listView.Items[i].SubItems.Add(dataReader["CategoryId"].ToString());
+                        listView.Items[i].SubItems.Add(dataReader["Name"].ToString());
+                        listView.Items[i].SubItems.Add(dataReader["Price"].ToString());
+                        listView.Items[i].SubItems.Add(dataReader["Quantity"].ToString());
+                        listView.Items[i].SubItems.Add(dataReader["Rating"].ToString());
+                        listView.Items[i].SubItems.Add(dataReader["CategoryId"].ToString());
                     }
 
                 }
@@ -104,27 +104,27 @@ public partial class Form1 : Form
 
     private async void SearchBtn_ClickAsync(object sender, EventArgs e)
     {
-            try
+        try
+        {
+
+            if (cmbBox_Category.SelectedItem is null)
             {
+                MessageBox.Show("Please select any category", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Searchtxtbox.Text = null;
+                return;
+            }
 
-            if (cmbBox_Category.SelectedItem is null )
-                {
-                    MessageBox.Show("Please select any category","Warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                    Searchtxtbox.Text = null;
-                    return;
-                }
+            command = new("SELECT Product.Id AS [Id] ,Product.[Name] AS [Name],Product.[Price] AS [Price],Product.[Quantity] AS [Quantity],Product.[CategoryId] AS [CategoryId],Product.[Rating] AS [Rating] FROM Product INNER JOIN Category ON CategoryId = Category.Id WHERE LOWER(Category.[Name])=LOWER(@p1) AND LOWER(Product.[Name]) LIKE '%' + LOWER(@st) +'%' GROUP BY Product.Id ,Product.[Name] ,Product.Price,Product.Quantity ,Product.CategoryId,Product.Rating", conn);
+            command.Parameters.AddWithValue("@st", SqlDbType.Text).Value = Searchtxtbox.Text.ToString();
+            command.Parameters.Add("@p1", SqlDbType.NVarChar).Value = cmbBox_Category.SelectedItem.ToString();
 
-                command = new("SELECT Product.Id AS [Id] ,Product.[Name] AS [Name],Product.[Price] AS [Price],Product.[Quantity] AS [Quantity],Product.[CategoryId] AS [CategoryId],Product.[Rating] AS [Rating] FROM Product INNER JOIN Category ON CategoryId = Category.Id WHERE LOWER(Category.[Name])=LOWER(@p1) AND LOWER(Product.[Name]) LIKE '%' + LOWER(@st) +'%' GROUP BY Product.Id ,Product.[Name] ,Product.Price,Product.Quantity ,Product.CategoryId,Product.Rating", conn);
-                command.Parameters.AddWithValue("@st", SqlDbType.Text).Value = Searchtxtbox.Text.ToString();
-                command.Parameters.Add("@p1", SqlDbType.NVarChar).Value = cmbBox_Category.SelectedItem.ToString();
-           
-                conn.Open();
+            conn.Open();
 
-                DbDataReader dataReader =await command.ExecuteReaderAsync();
+            DbDataReader dataReader = await command.ExecuteReaderAsync();
 
-                listView.Items.Clear();
-                while (dataReader.Read())
-                {
+            listView.Items.Clear();
+            while (dataReader.Read())
+            {
                 listView.Items.Add(dataReader[0].ToString());
                 for (int i = 0; i < listView.Items.Count; i++)
                 {
@@ -135,16 +135,16 @@ public partial class Form1 : Form
                     listView.Items[i].SubItems.Add(dataReader["CategoryId"].ToString());
                 }
             }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                conn.Close();
-                Searchtxtbox.Text = null;
-            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
+        finally
+        {
+            conn.Close();
+            Searchtxtbox.Text = null;
+        }
     }
     private bool CheckSelectedItem()
     {
@@ -157,16 +157,16 @@ public partial class Form1 : Form
     }
     private void AddBtn_Click(object sender, EventArgs e)
     {
-     AddProduct addAuthor = new();
-     addAuthor.Show();
+        AddProduct addAuthor = new();
+        addAuthor.Show();
     }
-   
+
     private void EditBtn_Click(object sender, EventArgs e)
     {
-       
+
         if (cmbBox_Category.SelectedItem is null || !CheckSelectedItem())
         {
-            MessageBox.Show("Please select any author","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("Please select any author", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
         else
