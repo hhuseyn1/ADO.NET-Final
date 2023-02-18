@@ -37,6 +37,7 @@
             this.EditBtn = new System.Windows.Forms.Button();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.listView = new System.Windows.Forms.ListView();
+            this.RefreshDbBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbBox_Category
@@ -134,11 +135,26 @@
             this.listView.TabIndex = 8;
             this.listView.UseCompatibleStateImageBehavior = false;
             // 
+            // RefreshDbBtn
+            // 
+            this.RefreshDbBtn.BackColor = System.Drawing.Color.MediumPurple;
+            this.RefreshDbBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RefreshDbBtn.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.RefreshDbBtn.ForeColor = System.Drawing.Color.White;
+            this.RefreshDbBtn.Location = new System.Drawing.Point(449, 6);
+            this.RefreshDbBtn.Name = "RefreshDbBtn";
+            this.RefreshDbBtn.Size = new System.Drawing.Size(75, 23);
+            this.RefreshDbBtn.TabIndex = 9;
+            this.RefreshDbBtn.Text = "Refresh";
+            this.RefreshDbBtn.UseVisualStyleBackColor = false;
+            this.RefreshDbBtn.Click += new System.EventHandler(this.RefreshDbBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.RefreshDbBtn);
             this.Controls.Add(this.listView);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.EditBtn);
@@ -166,5 +182,6 @@
         private Button EditBtn;
         public Button DeleteBtn;
         private ListView listView;
+        private Button RefreshDbBtn;
     }
 }

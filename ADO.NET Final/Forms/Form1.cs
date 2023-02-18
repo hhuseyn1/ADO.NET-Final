@@ -2,6 +2,7 @@ using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using System.Data.Common;
+using System.Runtime.CompilerServices;
 
 namespace ADO.NET_Final;
 
@@ -101,8 +102,7 @@ public partial class Form1 : Form
             }
         }
     }
-
-    private async void SearchBtn_ClickAsync(object sender, EventArgs e)
+    private async void RefreshDb()
     {
         try
         {
@@ -145,6 +145,10 @@ public partial class Form1 : Form
             conn.Close();
             Searchtxtbox.Text = null;
         }
+    }
+    private async void SearchBtn_ClickAsync(object sender, EventArgs e)
+    {
+        RefreshDb();
     }
     public bool CheckSelectedItem()
     {
@@ -219,5 +223,10 @@ public partial class Form1 : Form
                 conn.Close();
             }
         }
+    }
+
+    private void RefreshDbBtn_Click(object sender, EventArgs e)
+    {
+        RefreshDb();
     }
 }
