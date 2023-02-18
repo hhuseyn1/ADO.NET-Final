@@ -146,7 +146,7 @@ public partial class Form1 : Form
             Searchtxtbox.Text = null;
         }
     }
-    private bool CheckSelectedItem()
+    public bool CheckSelectedItem()
     {
         foreach (var item in listView.SelectedItems)
         {
@@ -166,7 +166,7 @@ public partial class Form1 : Form
 
         if (cmbBox_Category.SelectedItem is null || !CheckSelectedItem())
         {
-            MessageBox.Show("Please select any author", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Please select any product", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
         else
@@ -183,7 +183,7 @@ public partial class Form1 : Form
     {
         if (cmbBox_Category.SelectedItem is null || !CheckSelectedItem())
         {
-            MessageBox.Show("Please select any author", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Please select any product", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             return;
         }
         else

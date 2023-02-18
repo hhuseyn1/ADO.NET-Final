@@ -9,6 +9,7 @@ public partial class EditProduct : Form
 {
     SqlConnection conn = null;
     SqlCommand command = null;
+    SqlTransaction transaction = null;
     string connectionString = null;
     int id;
     public EditProduct(int id)
@@ -40,14 +41,17 @@ public partial class EditProduct : Form
         try
         {
             conn.Open();
-            command = new SqlCommand("SELECT Authors.[FirstName] AS [FirstName] , Authors.[LastName] AS [LastName]  FROM Authors WHERE @id=Authors.Id GROUP BY Authors.Id,Authors.[FirstName],Authors.[LastName]", conn);
+            command = new SqlCommand("SELECT Product.[Name] AS [Name],Product.[Price] AS [Price],Product.[Quantity] AS [Quantity],Product.[CategoryId] AS [CatId],Product.[Rating] AS [Rating] FROM Product WHERE Id=@id", conn);
             command.Parameters.AddWithValue("@id", id);
             DbDataReader dataReader = await command.ExecuteReaderAsync();
             Idtxtbox.Text = id.ToString();
             while (dataReader.Read())
             {
-                Nametxtbox.Text = dataReader["FirstName"].ToString();
-                Ratingtxtbox.Text = dataReader["LastName"].ToString();
+                Nametxtbox.Text = dataReader["Name"].ToString();
+                Ratingtxtbox.Text = dataReader["Rating"].ToString();
+                Pricetxtbox.Text = dataReader["Price"].ToString();
+                Quantitytxtbox.Text = dataReader["Quantity"].ToString();
+                CatIdtxtbox.Text = dataReader["CatId"].ToString();
             }
         }
         catch (Exception ex)
@@ -60,36 +64,42 @@ public partial class EditProduct : Form
 
         }
     }
-
+   
 
     private void SaveBtn_Click(object sender, EventArgs e)
     {
         //Create store procedure
 
         //CREATE PROCEDURE usp_UpdateProduct
-        //@aId int,
-        //@aFirstName nvarchar(20),
-        //@aLastName nvarchar(20)
+        //@pId int,
+        //@pName nvarchar(20),
+        //@pPrice decimal(18,0),
+        //@pQuantity int,
+        //@pRating decimal(18,0),
+        //@pCategoryId int
         //AS
-        //UPDATE Authors SET FirstName = @aFirstName,LastName = @aLastName WHERE Id = @aId
+        //UPDATE Product SET Name = @pName,Price = @pPrice ,Quantity = @pQuantity,Rating = @pRating,CategoryId=@pCategoryId WHERE Id = @pId
         //RETURN 0
         try
         {
+            conn.Open();
+            transaction = conn.BeginTransaction();
             SqlCommand updateCommand = new SqlCommand()
             {
                 CommandText = "dbo.usp_UpdateProduct",
                 Connection = conn,
                 CommandType = CommandType.StoredProcedure,
+                Transaction = transaction
             };
+            updateCommand.Parameters.AddWithValue("@pId",SqlDbType.NVarChar ).Value=Idtxtbox.Text;
             updateCommand.Parameters.AddWithValue("@pName",SqlDbType.NVarChar ).Value=Nametxtbox.Text;
             updateCommand.Parameters.AddWithValue("@pPrice",SqlDbType.Decimal ).Value= decimal.Parse(Pricetxtbox.Text);
             updateCommand.Parameters.AddWithValue("@pQuantity",SqlDbType.Int ).Value=int.Parse(Quantitytxtbox.Text);
             updateCommand.Parameters.AddWithValue("@pRating",SqlDbType.Decimal ).Value=decimal.Parse(Ratingtxtbox.Text);
             updateCommand.Parameters.AddWithValue("@pCategoryId",SqlDbType.Int ).Value=int.Parse(CatIdtxtbox.Text);
 
-            conn.Open();
             updateCommand.ExecuteNonQuery();
-
+            transaction.Commit();
         }
         catch (Exception ex)
         {

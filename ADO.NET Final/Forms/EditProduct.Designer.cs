@@ -40,13 +40,15 @@
             this.CatIdlbl = new System.Windows.Forms.Label();
             this.Quantitylbl = new System.Windows.Forms.Label();
             this.Pricelbl = new System.Windows.Forms.Label();
+            this.Idtxtbox = new System.Windows.Forms.TextBox();
+            this.Idlbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // NameLbl
             // 
             this.NameLbl.AutoSize = true;
             this.NameLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.NameLbl.Location = new System.Drawing.Point(25, 22);
+            this.NameLbl.Location = new System.Drawing.Point(21, 94);
             this.NameLbl.Name = "NameLbl";
             this.NameLbl.Size = new System.Drawing.Size(44, 17);
             this.NameLbl.TabIndex = 1;
@@ -56,7 +58,7 @@
             // 
             this.Ratinglbl.AutoSize = true;
             this.Ratinglbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Ratinglbl.Location = new System.Drawing.Point(119, 164);
+            this.Ratinglbl.Location = new System.Drawing.Point(238, 163);
             this.Ratinglbl.Name = "Ratinglbl";
             this.Ratinglbl.Size = new System.Drawing.Size(47, 17);
             this.Ratinglbl.TabIndex = 2;
@@ -64,14 +66,14 @@
             // 
             // Nametxtbox
             // 
-            this.Nametxtbox.Location = new System.Drawing.Point(25, 42);
+            this.Nametxtbox.Location = new System.Drawing.Point(21, 114);
             this.Nametxtbox.Name = "Nametxtbox";
             this.Nametxtbox.Size = new System.Drawing.Size(141, 23);
             this.Nametxtbox.TabIndex = 4;
             // 
             // Ratingtxtbox
             // 
-            this.Ratingtxtbox.Location = new System.Drawing.Point(119, 184);
+            this.Ratingtxtbox.Location = new System.Drawing.Point(238, 183);
             this.Ratingtxtbox.Name = "Ratingtxtbox";
             this.Ratingtxtbox.Size = new System.Drawing.Size(141, 23);
             this.Ratingtxtbox.TabIndex = 5;
@@ -100,7 +102,7 @@
             // 
             // CatIdtxtbox
             // 
-            this.CatIdtxtbox.Location = new System.Drawing.Point(25, 112);
+            this.CatIdtxtbox.Location = new System.Drawing.Point(21, 184);
             this.CatIdtxtbox.Name = "CatIdtxtbox";
             this.CatIdtxtbox.Size = new System.Drawing.Size(141, 23);
             this.CatIdtxtbox.TabIndex = 13;
@@ -123,7 +125,7 @@
             // 
             this.CatIdlbl.AutoSize = true;
             this.CatIdlbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CatIdlbl.Location = new System.Drawing.Point(25, 92);
+            this.CatIdlbl.Location = new System.Drawing.Point(21, 164);
             this.CatIdlbl.Name = "CatIdlbl";
             this.CatIdlbl.Size = new System.Drawing.Size(80, 17);
             this.CatIdlbl.TabIndex = 10;
@@ -149,11 +151,31 @@
             this.Pricelbl.TabIndex = 8;
             this.Pricelbl.Text = "Price";
             // 
+            // Idtxtbox
+            // 
+            this.Idtxtbox.Location = new System.Drawing.Point(21, 42);
+            this.Idtxtbox.Name = "Idtxtbox";
+            this.Idtxtbox.ReadOnly = true;
+            this.Idtxtbox.Size = new System.Drawing.Size(141, 23);
+            this.Idtxtbox.TabIndex = 15;
+            // 
+            // Idlbl
+            // 
+            this.Idlbl.AutoSize = true;
+            this.Idlbl.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Idlbl.Location = new System.Drawing.Point(21, 22);
+            this.Idlbl.Name = "Idlbl";
+            this.Idlbl.Size = new System.Drawing.Size(20, 17);
+            this.Idlbl.TabIndex = 14;
+            this.Idlbl.Text = "Id";
+            // 
             // EditProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(440, 322);
+            this.Controls.Add(this.Idtxtbox);
+            this.Controls.Add(this.Idlbl);
             this.Controls.Add(this.CatIdtxtbox);
             this.Controls.Add(this.Quantitytxtbox);
             this.Controls.Add(this.Pricetxtbox);
@@ -186,5 +208,7 @@
         private Label CatIdlbl;
         private Label Quantitylbl;
         private Label Pricelbl;
+        private TextBox Idtxtbox;
+        private Label Idlbl;
     }
 }

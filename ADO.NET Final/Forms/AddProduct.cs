@@ -32,7 +32,6 @@ public partial class AddProduct : Form
         Ratingtxtbox.Text = null;
         Nametxtbox.Text = null;
         CatIdtxtbox.Text = null;
-        Idtxtbox.Text = null;
         Pricetxtbox.Text = null;
         Quantitytxtbox.Text = null;
     }

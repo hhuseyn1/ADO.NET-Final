@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CatIdtxtbox = new System.Windows.Forms.TextBox();
             this.Quantitytxtbox = new System.Windows.Forms.TextBox();
             this.Pricetxtbox = new System.Windows.Forms.TextBox();
             this.CatIdlbl = new System.Windows.Forms.Label();
@@ -37,17 +36,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.SaveBtn = new System.Windows.Forms.Button();
             this.Ratingtxtbox = new System.Windows.Forms.TextBox();
-            this.Nametxtbox = new System.Windows.Forms.TextBox();
             this.Ratinglbl = new System.Windows.Forms.Label();
             this.NameLbl = new System.Windows.Forms.Label();
+            this.Nametxtbox = new System.Windows.Forms.TextBox();
+            this.CatIdtxtbox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // CatIdtxtbox
-            // 
-            this.CatIdtxtbox.Location = new System.Drawing.Point(37, 124);
-            this.CatIdtxtbox.Name = "CatIdtxtbox";
-            this.CatIdtxtbox.Size = new System.Drawing.Size(141, 23);
-            this.CatIdtxtbox.TabIndex = 29;
             // 
             // Quantitytxtbox
             // 
@@ -122,13 +115,6 @@
             this.Ratingtxtbox.Size = new System.Drawing.Size(141, 23);
             this.Ratingtxtbox.TabIndex = 21;
             // 
-            // Nametxtbox
-            // 
-            this.Nametxtbox.Location = new System.Drawing.Point(37, 54);
-            this.Nametxtbox.Name = "Nametxtbox";
-            this.Nametxtbox.Size = new System.Drawing.Size(141, 23);
-            this.Nametxtbox.TabIndex = 20;
-            // 
             // Ratinglbl
             // 
             this.Ratinglbl.AutoSize = true;
@@ -148,6 +134,20 @@
             this.NameLbl.Size = new System.Drawing.Size(44, 17);
             this.NameLbl.TabIndex = 17;
             this.NameLbl.Text = "Name";
+            // 
+            // Nametxtbox
+            // 
+            this.Nametxtbox.Location = new System.Drawing.Point(37, 54);
+            this.Nametxtbox.Name = "Nametxtbox";
+            this.Nametxtbox.Size = new System.Drawing.Size(141, 23);
+            this.Nametxtbox.TabIndex = 20;
+            // 
+            // CatIdtxtbox
+            // 
+            this.CatIdtxtbox.Location = new System.Drawing.Point(37, 124);
+            this.CatIdtxtbox.Name = "CatIdtxtbox";
+            this.CatIdtxtbox.Size = new System.Drawing.Size(141, 23);
+            this.CatIdtxtbox.TabIndex = 29;
             // 
             // AddProduct
             // 
@@ -174,8 +174,6 @@
         }
 
         #endregion
-
-        private TextBox CatIdtxtbox;
         private TextBox Quantitytxtbox;
         private TextBox Pricetxtbox;
         private Label CatIdlbl;
@@ -184,8 +182,9 @@
         private Button button1;
         private Button SaveBtn;
         private TextBox Ratingtxtbox;
-        private TextBox Nametxtbox;
         private Label Ratinglbl;
         private Label NameLbl;
+        private TextBox Nametxtbox;
+        private TextBox CatIdtxtbox;
     }
 }
